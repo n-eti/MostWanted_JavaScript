@@ -86,21 +86,16 @@ function mainMenu(person = [defaultPerson], people) {
             let personInfo = displayPerson(person[0]);
             alert(personInfo);
             break;
-            case "family":
-                function findPersonFamily(parents = [0], people=[defaultPerson]){
-                people.filter(function(person){
-                    person.parents
-                })
-                }
-                    //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
-                    // HINT: Look for a people-collection stringifier utility function to help
-                let personFamily = findPersonFamily(person[0], people);
-                alert(personFamily);
-                break;
-            case "descendants":
-                    //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
-                    // HINT: Review recursion lecture + demo for bonus user story
-                let personDescendants = findPersonDescendants(person[0], people);
+        case "family":
+            //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
+            // HINT: Look for a people-collection stringifier utility function to help
+            let personFamily = findPersonFamily(person[0], people);
+            alert(personFamily);
+            break;
+        case "descendants":
+            //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
+            // HINT: Review recursion lecture + demo for bonus user story
+            let personDescendants = findPersonDescendants(person[0], people);
             alert(personDescendants);
             break;
         case "restart":
@@ -113,58 +108,58 @@ function mainMenu(person = [defaultPerson], people) {
         default:
             // Prompt user again. Another instance of recursion
             return mainMenu(person, people);
-    }
-}
-// End of mainMenu()
-
-/**
- * This function is used when searching the people collection by
- * a person-object's firstName and lastName properties.
- * @param {Array} people        A collection of person objects.
- * @returns {Array}             An array containing the person-object (or empty array if no match)
- */
-function searchByName(people) {
-    let firstName = promptFor("What is the person's first name?", chars);
-    let lastName = promptFor("What is the person's last name?", chars);
-
-    // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
-    let foundPerson = people.filter(function (person) {
-        if (person.firstName === firstName && person.lastName === lastName) {
-            return true;
+            }
         }
-    });
-    return foundPerson;
-}
-// End of searchByName()
+        // End of mainMenu()
 
-/**
- * This function will be useful for STRINGIFYING a collection of person-objects
- * first and last name properties in order to easily send the information
- * to the user in the form of an alert().
- * @param {Array} people        A collection of person objects.
- */
-function displayPeople(people) {
-    alert(
-        people
+        /**
+         * This function is used when searching the people collection by
+         * a person-object's firstName and lastName properties.
+         * @param {Array} people        A collection of person objects.
+         * @returns {Array}             An array containing the person-object (or empty array if no match)
+        */
+        function searchByName(people) {
+            let firstName = promptFor("What is the person's first name?", chars);
+            let lastName = promptFor("What is the person's last name?", chars);
+            
+            // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
+            let foundPerson = people.filter(function (person) {
+                if (person.firstName === firstName && person.lastName === lastName) {
+                    return true;
+                }
+            });
+            return foundPerson;
+        }
+        // End of searchByName()
+        
+        /**
+         * This function will be useful for STRINGIFYING a collection of person-objects
+         * first and last name properties in order to easily send the information
+         * to the user in the form of an alert().
+         * @param {Array} people        A collection of person objects.
+        */
+        function displayPeople(people) {
+            alert(
+            people
             .map(function (person) {
                 return `${person.firstName} ${person.lastName}`;
             })
             .join("\n")
-    );
-}
-// End of displayPeople()
-
-/**
- * This function will be useful for STRINGIFYING a person-object's properties
- * in order to easily send the information to the user in the form of an alert().
- * @param {Object} person       A singular object.
- */
-function displayPerson(person) {
-    let personInfo = `First Name: ${person.firstName}\n`;
-    personInfo += `Last Name: ${person.lastName}\n`;
-    personInfo += `eyeColor: ${person.eyeColor}\n`;
-    personInfo += `gender: ${person.gender}\n`;
-    personInfo += `occupation: ${person.occupation}\n`;
+            );
+        }
+        // End of displayPeople()
+        
+        /**
+         * This function will be useful for STRINGIFYING a person-object's properties
+         * in order to easily send the information to the user in the form of an alert().
+         * @param {Object} person       A singular object.
+        */
+       function displayPerson(person) {
+           let personInfo = `First Name: ${person.firstName}\n`;
+           personInfo += `Last Name: ${person.lastName}\n`;
+           personInfo += `eyeColor: ${person.eyeColor}\n`;
+           personInfo += `gender: ${person.gender}\n`;
+           personInfo += `occupation: ${person.occupation}\n`;
     personInfo += `weight: ${person.weight}\n`;
     personInfo += `id: ${person.id}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
@@ -179,7 +174,7 @@ function displayPerson(person) {
  * @param {String} question     A string that will be passed into prompt().
  * @param {Function} valid      A callback function used to validate basic user input.
  * @returns {String}            The valid string input retrieved from the user.
- */
+*/
 function promptFor(question, valid) {
     do {
         var response = prompt(question).trim();
@@ -187,6 +182,11 @@ function promptFor(question, valid) {
     return response;
 }
 // End of promptFor()
+function findPersonFamily(parents = [0], people=[defaultPerson]){
+people.filter(function(person){
+    person.parents
+})
+}
 
 /**
  * This helper function checks to see if the value passed into input is a "yes" or "no."
