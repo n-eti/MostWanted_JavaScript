@@ -42,16 +42,29 @@ function app(people) {
     mainMenu(searchResults, people);
 }
 // End of app()
+let defaultPerson = {
+    "id": 0,
+    "firstName": "",
+    "lastName": "",
+    "gender": "",
+    "dob": "",
+    "height": 0,
+    "weight": 0,
+    "eyeColor": "",
+    "occupation": "",
+    "parents": [],
+    "currentSpouse": 0
+}
 
 /**
  * After finding a single person, we pass in the entire person-object that we found,
  * as well as the entire original dataset of people. We need people in order to find
  * descendants and other information that the user may want.
- * @param {Object[]} person     A singular object inside of an array.
+//  * @param {Object[]} person     A singular object inside of an array.
  * @param {Array} people        A collection of person objects.
  * @returns {String}            The valid string input retrieved from the user.
  */
-function mainMenu(person, people) {
+function mainMenu(person = [defaultPerson], people) {
     // A check to verify a person was found via searchByName() or searchByTrait()
     if (!person[0]) {
         alert("Could not find that individual.");
@@ -62,25 +75,32 @@ function mainMenu(person, people) {
         `Found ${person[0].firstName} ${person[0].lastName}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
     );
     // Routes our application based on the user's input
+    
+    
     switch (displayOption) {
         case "info":
             //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
             // HINT: Look for a person-object stringifier utility function to help
-
-        
+            
+            
             let personInfo = displayPerson(person[0]);
             alert(personInfo);
             break;
-        case "family":
-            //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
-            // HINT: Look for a people-collection stringifier utility function to help
-            let personFamily = findPersonFamily(person[0], people);
-            alert(personFamily);
-            break;
-        case "descendants":
-            //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
-            // HINT: Review recursion lecture + demo for bonus user story
-            let personDescendants = findPersonDescendants(person[0], people);
+            case "family":
+                function findPersonFamily(parents = [0], people=[defaultPerson]){
+                people.filter(function(person){
+                    person.parents
+                })
+                }
+                    //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
+                    // HINT: Look for a people-collection stringifier utility function to help
+                let personFamily = findPersonFamily(person[0], people);
+                alert(personFamily);
+                break;
+            case "descendants":
+                    //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
+                    // HINT: Review recursion lecture + demo for bonus user story
+                let personDescendants = findPersonDescendants(person[0], people);
             alert(personDescendants);
             break;
         case "restart":
