@@ -87,10 +87,19 @@ function mainMenu(person = [defaultPerson], people) {
             alert(personInfo);
             break;
         case "family":
-            //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
-            // HINT: Look for a people-collection stringifier utility function to help
+                //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             let personFamily = findPersonFamily(person[0], people);
+            let foundParent = people.filter(function (person) {
+                if (person.parents) {
+                    return true;
+                }
+            });
+            return foundParent;
+            console.log(foundParent);
+            // HINT: Look for a people-collection stringifier utility function to help
             alert(personFamily);
+            
+                if (person.firstName === firstName && person.lastName === lastName)
             break;
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
