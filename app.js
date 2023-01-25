@@ -86,30 +86,29 @@ function mainMenu(person = [defaultPerson], people) {
             let personInfo = displayPerson(person[0]);
             alert(personInfo);
             break;
-        case "family":
+            case "family":
                 //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
-            let personFamily = findPersonFamily(person[0], people);
-            let foundParent = people.filter(function (person) {
-                if (person.parents) {
-                    return true;
-                }
-            });
-            return foundParent;
-            console.log(foundParent);
-            // HINT: Look for a people-collection stringifier utility function to help
-            alert(personFamily);
-            
-                if (person.firstName === firstName && person.lastName === lastName)
-            break;
-        case "descendants":
-            //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
-            // HINT: Review recursion lecture + demo for bonus user story
-            let personDescendants = findPersonDescendants(person[0], people);
-            alert(personDescendants);
-            break;
-        case "restart":
-            // Restart app() from the very beginning
-            app(people);
+                let foundParent = findPersonFamily(person[0], people);
+                //     if (person.parents) {
+                    //         return true;
+                    //     }
+                    // ;
+                    // return foundParent;
+                    // console.log(foundParent);
+                    // HINT: Look for a people-collection stringifier utility function to help
+                    // alert(personFamily);
+                    
+                    //     if (person.firstName === firstName && person.lastName === lastName)
+                    break;
+                    case "descendants":
+                        //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
+                        // HINT: Review recursion lecture + demo for bonus user story
+                        let personDescendants = findPersonDescendants(person[0], people);
+                        alert(personDescendants);
+                        break;
+                        case "restart":
+                            // Restart app() from the very beginning
+                            app(people);
             break;
         case "quit":
             // Stop application execution
@@ -117,24 +116,24 @@ function mainMenu(person = [defaultPerson], people) {
         default:
             // Prompt user again. Another instance of recursion
             return mainMenu(person, people);
-            }
+        }
         }
         // End of mainMenu()
-
+        
         /**
          * This function is used when searching the people collection by
          * a person-object's firstName and lastName properties.
          * @param {Array} people        A collection of person objects.
          * @returns {Array}             An array containing the person-object (or empty array if no match)
         */
-        function searchByName(people) {
-            let firstName = promptFor("What is the person's first name?", chars);
-            let lastName = promptFor("What is the person's last name?", chars);
-            
-            // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
-            let foundPerson = people.filter(function (person) {
-                if (person.firstName === firstName && person.lastName === lastName) {
-                    return true;
+       function searchByName(people) {
+           let firstName = promptFor("What is the person's first name?", chars);
+           let lastName = promptFor("What is the person's last name?", chars);
+           
+           // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
+           let foundPerson = people.filter(function (person) {
+               if (person.firstName === firstName && person.lastName === lastName) {
+                   return true;
                 }
             });
             return foundPerson;
@@ -147,16 +146,16 @@ function mainMenu(person = [defaultPerson], people) {
          * to the user in the form of an alert().
          * @param {Array} people        A collection of person objects.
         */
-        function displayPeople(people) {
+       function displayPeople(people) {
             alert(
-            people
-            .map(function (person) {
-                return `${person.firstName} ${person.lastName}`;
-            })
-            .join("\n")
-            );
-        }
-        // End of displayPeople()
+                people
+                .map(function (person) {
+                    return `${person.firstName} ${person.lastName}`;
+                })
+                .join("\n")
+                );
+            }
+            // End of displayPeople()
         
         /**
          * This function will be useful for STRINGIFYING a person-object's properties
@@ -169,7 +168,7 @@ function mainMenu(person = [defaultPerson], people) {
            personInfo += `eyeColor: ${person.eyeColor}\n`;
            personInfo += `gender: ${person.gender}\n`;
            personInfo += `occupation: ${person.occupation}\n`;
-    personInfo += `weight: ${person.weight}\n`;
+           personInfo += `weight: ${person.weight}\n`;
     personInfo += `id: ${person.id}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
     alert(personInfo);
@@ -191,11 +190,32 @@ function promptFor(question, valid) {
     return response;
 }
 // End of promptFor()
-function findPersonFamily(parents = [0], people=[defaultPerson]){
-people.filter(function(person){
-    person.parents
-})
-}
+function findPersonFamily(foundPerson = [0], people=[defaultPerson]){
+    let foundParent = people.filter(function(person){
+        if (foundPerson.parents.includes(person.id)) {
+            // foundParent = displayPerson
+            return true;
+
+            // if (we approach find siblings in a roundabout way to fnid matching parent arrays. 
+            // we create seperate fuumctions for each piece and call it within findpersonfamily) for testing keep as returnfoundparent.
+            // display people function to provide a alert window, to use that we replace returnfound parent with displayPeople(foundparent)and
+            // then copy it down and fill it with findsiblings/findspouse. Use if statements and return true. Recommends findspouse first because it deals 
+            // a lot less with arrays by checking does this spouse id equal id. Siblings is most complex bcs it looks at 2 arrays to determine if 
+            // it has a common value. with sibling we will get a little more granular and dial in to a specific person's parent id. with spouse it's 
+            // going to be like searchbyname function. It's similar bcs we're filtering through = main difference is we won't use user input but found person property on one side and \
+            // person's property on the other. 
+            
+            
+    }} )}
+        ;
+   
+    // return foundParent
+    // displayPeople (foundParents)
+    // let findSiblings = if condition xyz return true 
+    
+    // displayPeople (foundParent)
+let findSpouse = 
+
 
 /**
  * This helper function checks to see if the value passed into input is a "yes" or "no."
@@ -212,7 +232,7 @@ function yesNo(input) {
  * Feel free to modify this to suit your needs.
  * @param {String} input        A string.
  * @returns {Boolean}           Default validation -- no logic yet.
- */
+*/
 function chars(input) {
     return true; // Default validation only
 }
