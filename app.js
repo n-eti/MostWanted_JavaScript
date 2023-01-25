@@ -196,6 +196,14 @@ function findPersonFamily(foundPerson = [0], people = [personTemplate]) {
   });
   displayPeople(foundParents);
 }
+function findPersonFamily(foundPerson = [0], people = [personTemplate]) {
+    let foundCurrentSpouse = people.filter(function(person){
+        if (foundPerson.currentSpouse.includes(person.id)) {
+            return true;
+        }
+    });
+    displayPeople(foundCurrentSpouse);
+}
 // return foundParent
 // if (we approach find siblings in a roundabout way to fnid matching parent arrays.
 // we create seperate fuumctions for each piece and call it within findpersonfamily) for testing keep as returnfoundparent.
