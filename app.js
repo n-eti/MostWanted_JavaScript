@@ -174,6 +174,9 @@ function mainMenu(person = [defaultPerson], people) {
     alert(personInfo);
 }
 // End of displayPerson()
+function yesNo(input) {
+    return input.toLowerCase() === "yes" || input.toLowerCase() === "no";
+}
 
 /**
  * This function's purpose is twofold:
@@ -222,9 +225,6 @@ let findSpouse =
  * @param {String} input        A string that will be normalized via .toLowerCase().
  * @returns {Boolean}           The result of our condition evaluation.
  */
-function yesNo(input) {
-    return input.toLowerCase() === "yes" || input.toLowerCase() === "no";
-}
 // End of yesNo()
 
 /**
