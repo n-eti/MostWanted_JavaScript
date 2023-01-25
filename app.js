@@ -84,7 +84,8 @@ function mainMenu(person = [personTemplate], people) {
       let personInfo = displayPerson(person[0]);
       alert(personInfo);
       break;
-    case "family":
+    case "family": 
+    findPersonFamily(person[0], people );
       //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
       //   let foundParent = findPersonFamily(person[0], people);
       //     if (person.parents) {
@@ -190,17 +191,19 @@ function promptFor(question, valid) {
 // End of promptFor()
 function findPersonFamily(foundPerson = [0], people = [personTemplate]) {
   let foundParents = people.filter(function (person) {
-    if (foundPerson.parents.includes(person.id));
+    if (foundPerson.parents.includes(person.id))
     {
       return true;
     }
   });
   displayPeople(foundParents);
+
+  findCurrentSpouse(foundPerson, people)
 }
 
-function findPersonFamily(foundPerson = [0], people = [personTemplate]) {
+function findCurrentSpouse(foundPerson = [0], people = [personTemplate]) {
   let foundCurrentSpouse = people.filter(function (person) {
-    if (foundPerson.currentSpouse.includes(person.id)) {
+    if (foundPerson.currentSpouse === person.id) {
       return true;
     }
   });
