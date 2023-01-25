@@ -86,7 +86,7 @@ function mainMenu(person = [personTemplate], people) {
       break;
     case "family":
       //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
-      let foundParent = findPersonFamily(person[0], people);
+      //   let foundParent = findPersonFamily(person[0], people);
       //     if (person.parents) {
       //         return true;
       //     }
@@ -190,19 +190,21 @@ function promptFor(question, valid) {
 // End of promptFor()
 function findPersonFamily(foundPerson = [0], people = [personTemplate]) {
   let foundParents = people.filter(function (person) {
-    if (foundPerson.parents.includes(person.id)) {
+    if (foundPerson.parents.includes(person.id));
+    {
       return true;
     }
   });
   displayPeople(foundParents);
 }
+
 function findPersonFamily(foundPerson = [0], people = [personTemplate]) {
-    let foundCurrentSpouse = people.filter(function(person){
-        if (foundPerson.currentSpouse.includes(person.id)) {
-            return true;
-        }
-    });
-    displayPeople(foundCurrentSpouse);
+  let foundCurrentSpouse = people.filter(function (person) {
+    if (foundPerson.currentSpouse.includes(person.id)) {
+      return true;
+    }
+  });
+  displayPeople(foundCurrentSpouse);
 }
 // return foundParent
 // if (we approach find siblings in a roundabout way to fnid matching parent arrays.
