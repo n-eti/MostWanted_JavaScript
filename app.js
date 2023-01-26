@@ -105,6 +105,7 @@ function mainMenu(person = [personTemplate], people) {
       let personDescendants = findPersonDescendants(person[0], people);
       alert(personDescendants);
       break;
+
     case "restart":
       // Restart app() from the very beginning
       app(people);
@@ -209,12 +210,22 @@ function findCurrentSpouse(foundPerson = [0], people = [personTemplate]) {
   });
   displayPeople(foundCurrentSpouse);
 }
-// return foundParent
-// if (we approach find siblings in a roundabout way to fnid matching parent arrays.
+
+function findPersonDescendants(foundPerson = [0], people = [personTemplate]) {
+  let foundDescendants = people.filter(function(person) {
+    if (foundPerson.descendants === person.id) {
+      return true;
+    }
+  });
+  displayPeople(foundDescendants);
+}
+        
+
+
 // we create seperate fuumctions for each piece and call it within findpersonfamily) for testing keep as returnfoundparent.
 // display people function to provide a alert window, to use that we replace returnfound parent with displayPeople(foundparent)and
 // then copy it down and fill it with findsiblings/findspouse. Use if statements and return true. Recommends findspouse first because it deals
-// a lot less with arrays by checking does this spouse id equal id. Siblings is most complex bcs it looks at 2 arrays to determine if
+// a lot less with arrays by checking does this spouse id equal id. bcs it looks at 2 arrays to determine if
 // it has a common value. with sibling we will get a little more granular and dial in to a specific person's parent id. with spouse it's
 // going to be like searchbyname function. It's similar bcs we're filtering through = main difference is we won't use user input but found person property on one side and \
 // person's property on the other.
