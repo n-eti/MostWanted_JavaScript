@@ -100,9 +100,9 @@ function mainMenu(person = [personTemplate], people) {
       //     if (person.firstName === firstName && person.lastName === lastName)
       break;
     case "descendants":
+      findPersonDescendants(person[0], people);
       //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
       // HINT: Review recursion lecture + demo for bonus user story
-    findPersonDescendants(person[0], people);
       break;
 
     case "restart":
@@ -212,13 +212,12 @@ function findCurrentSpouse(foundPerson = [0], people = [personTemplate]) {
 
 function findPersonDescendants(foundPerson = [0], people = [personTemplate]) {
   let foundDescendants = people.filter(function(person) {
-    if (foundPerson.descendants === person.id) {
+    if (foundPerson.foundDescendants === person.id) {
       return true;
     }
   });
   displayPeople(foundDescendants);
-
-  findPersonDescendants(foundPerson, people)
+  findPersonDescendants(foundDescendants, people)
 }
         
 
