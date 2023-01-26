@@ -102,8 +102,7 @@ function mainMenu(person = [personTemplate], people) {
     case "descendants":
       //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
       // HINT: Review recursion lecture + demo for bonus user story
-      let personDescendants = findPersonDescendants(person[0], people);
-      alert(personDescendants);
+    findPersonDescendants(person[0], people);
       break;
 
     case "restart":
@@ -218,6 +217,8 @@ function findPersonDescendants(foundPerson = [0], people = [personTemplate]) {
     }
   });
   displayPeople(foundDescendants);
+
+  findPersonDescendants(foundPerson, people)
 }
         
 
