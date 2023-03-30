@@ -217,7 +217,7 @@ function findPersonDescendants(foundPerson = [0], people = [personTemplate]) {
     }
   });
   displayPeople(foundDescendants);
-  findPersonDescendants(foundDescendants, people)
+  // findPersonDescendants(foundDescendants, people)
 }
         
 
@@ -257,3 +257,19 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+function searchByTraits(people = [personTemplate]){
+  let response = "yes"
+  while (response === "yes") {
+
+    let trait = prompt("Choose a trait: \n(gender, dob, height, weight, eyeColor, occupation");
+
+    let searchValue = prompt(`Please choose a value for ${trait}`);
+    people=people.filter((person) => {
+      if (person[trait] === searchValue) return true;
+    });
+
+    response = promptFor("Do you want to search by another trait?", yesNo);
+  }
+  displayPeople(people);
+}
